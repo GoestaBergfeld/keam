@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Relation</h2>
+<mat-dialog-content>
+  <form #form="ngForm" [formGroup]="relationForm">
+    <mat-form-field>
+      <mat-select placeholder="StartNode" formControlName="StartNodeId">
+        <mat-option *ngFor="let node of nodes" [value]="node.Id">
+          {{node.Name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="EndNode" formControlName="EndNodeId">
+        <mat-option *ngFor="let node of nodes" [value]="node.Id">
+          {{node.Name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="RelationType" formControlName="RelationType">
+        <mat-option *ngFor="let relationType of relationTypes | enumToArray" [value]="relationType">
+          {{relationType}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="Description">
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="onSave()">Save</button>
+</mat-dialog-actions>

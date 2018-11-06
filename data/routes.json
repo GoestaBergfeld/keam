@@ -1,0 +1,6 @@
+{
+  "/api/*": "/$1",
+  "/node/*": "/nodes/$1",
+  "/attribute/*": "/attributes/$1",
+  "/relation/*": "/relations/$1"
+}

@@ -16,6 +16,13 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@shared/glob": ["src/app/shared/index.ts"],
+      "@shared/components": ["src/app/shared/components/index.ts"],
+      "@shared/entities": ["src/app/shared/entities/index.ts"],
+      "@shared/enums": ["src/app/shared/enums/index.ts"],
+      "@shared/pipes": ["src/app/shared/pipes/index.ts"]
+    }
   }
 }

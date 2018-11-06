@@ -1,0 +1,15 @@
+<mat-toolbar color="default">
+  <span>{{ node?.Name }}</span>
+</mat-toolbar>
+
+<div class="table-container">
+  <mat-tab-group *ngIf="node">
+    <mat-tab label="Attributes">
+      <p [innerText]="node.Description"></p>
+    </mat-tab>
+    <mat-tab label="Relations">
+      <h1>Some more tab content</h1>
+      <p>...</p>
+    </mat-tab>
+  </mat-tab-group>
+</div>

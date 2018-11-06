@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+  margin: 0;
+  font-family: Roboto;
+}
+
+a.mat-button {
+  text-align: left !important;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.table-container {
+  width: 90%;
+  height: calc(100vh - 200px);
+  margin: auto;
+  margin-top: 30px;
+}
+
+.mat-paginator {
+  position: absolute;
+  background-color: #f5f5f5;
+  width: 100%;
+  bottom: 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-tab-group, .mat-tab-body-wrapper, .mat-tab-body {
+  height: 100% !important;
+}
+
+.mat-dialog-content {
+  height: 90% !important;
+  max-height: unset !important;
+}
+
+.dialog-tab-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mat-toolbar {
+  position: relative !important;
+}
+
+.toolbar-fab {
+  position: absolute !important;
+  right: 20px;
+  top: 35px;
+  z-index: 1000;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex {
+  display: flex;
+}

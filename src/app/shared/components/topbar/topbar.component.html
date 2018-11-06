@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="mat-elevation-z3">
+  <div class="logo">
+    <mat-icon>device_hub</mat-icon>
+    <span>KEAM</span>
+  </div>
+  <div class="left">
+    <button mat-button [routerLink]="['nodes']">
+      Catalog
+    </button>
+    <button mat-button [routerLink]="['reports']">
+      Report
+    </button>
+  </div>
+  <div class="right">
+    <button mat-icon-button [matMenuTriggerFor]="settingsMenu">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #settingsMenu="matMenu">
+  <button mat-menu-item [routerLink]="['settings','attributes']">
+    <mat-icon>view_list</mat-icon> Attributes
+  </button>
+  <button mat-menu-item [routerLink]="['settings','node-types']">
+    <mat-icon>web_asset</mat-icon> Node Types
+  </button>
+  <button mat-menu-item [routerLink]="['settings','relation-types']">
+    <mat-icon>compare_arrows</mat-icon> Relation Types
+  </button>
+</mat-menu>

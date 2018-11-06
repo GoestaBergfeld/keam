@@ -1,0 +1,154 @@
+{
+  "nodes": [
+    {
+      "Id": 1,
+      "Name": "ONE 2.0",
+      "Description": "Internal Recruiting",
+      "NodeType": "InformationSystem",
+      "NodeAttributes": []
+    },
+    {
+      "Id": 2,
+      "Name": "eComp",
+      "Description": "Compensation Portal",
+      "NodeType": "InformationSystem",
+      "NodeAttributes": []
+    },
+    {
+      "Id": 5,
+      "Name": "evelop.me",
+      "Description": "Online Coaching Platform",
+      "NodeType": "InformationSystem",
+      "NodeAttributes": []
+    },
+    {
+      "Id": 7,
+      "Name": "prod04-ex",
+      "Description": "Virtual Machine on Windows 2000",
+      "NodeType": "Infrastructure",
+      "NodeAttributes": []
+    },
+    {
+      "Name": "myCareerGate",
+      "Description": "Jobportal",
+      "NodeType": "InformationSystem",
+      "Id": 8
+    },
+    {
+      "Name": "Person",
+      "Description": "Personen",
+      "NodeType": "BusinessObject",
+      "Id": 9
+    },
+    {
+      "Name": "Customer",
+      "NodeType": "BusinessObject",
+      "Id": 11
+    },
+    {
+      "Name": "Project",
+      "NodeType": "BusinessObject",
+      "Id": 12
+    },
+    {
+      "Name": "prod05-ex",
+      "NodeType": "Infrastructure",
+      "Id": 14
+    },
+    {
+      "Name": "prod01-in",
+      "NodeType": "Infrastructure",
+      "Id": 15
+    },
+    {
+      "Name": "VDB",
+      "Description": "Vergütungsdatenbank",
+      "NodeType": "InformationSystem",
+      "Id": 16
+    }
+  ],
+  "attributes": [
+    {
+      "Id": 1,
+      "Name": "EndOfLifeCycle",
+      "Description": "Date of end of lifecycle.",
+      "DataType": "Date",
+      "Required": true,
+      "MultipleAllowed": true,
+      "AllowedNodeTypes": [
+        "BusinessObject",
+        "InformationSystem",
+        "Infrastructure"
+      ]
+    },
+    {
+      "Name": "Risk",
+      "Description": "Risk",
+      "DataType": "Number",
+      "AllowedNodeTypes": [
+        "InformationSystem",
+        "Infrastructure"
+      ],
+      "Id": 2
+    },
+    {
+      "Name": "ServiceLine",
+      "Description": "Name of the service line which uses it",
+      "DataType": "OneLineText",
+      "AllowedNodeTypes": [
+        "BusinessObject",
+        "InformationSystem"
+      ],
+      "Id": 3,
+      "MultipleAllowed": true
+    },
+    {
+      "Name": "Monthly Cost Avg.",
+      "Description": "Average monthly costs",
+      "DataType": "Number",
+      "AllowedNodeTypes": [
+        "Infrastructure"
+      ],
+      "Id": 4
+    }
+  ],
+  "relations": [
+    {
+      "Id": 2,
+      "StartNodeId": 1,
+      "EndNodeId": 2,
+      "RelationType": "TwoWay",
+      "Description": "Gehaltsdaten"
+    },
+    {
+      "Id": 3,
+      "StartNodeId": 1,
+      "EndNodeId": 7,
+      "RelationType": "OneWay",
+      "Description": "Läuft auf"
+    },
+    {
+      "Id": 4,
+      "StartNodeId": 1,
+      "EndNodeId": 9,
+      "RelationType": "OneWay",
+      "Description": "used as candidates"
+    },
+    {
+      "Id": 5,
+      "StartNodeId": 9,
+      "EndNodeId": 8,
+      "RelationType": "OneWay",
+      "Description": "online candidates"
+    },
+    {
+      "Id": 6,
+      "StartNodeId": 9,
+      "EndNodeId": 5,
+      "RelationType": "TwoWay",
+      "Description": "whatever"
+    }
+  ],
+  "node-types": [],
+  "relation-types": []
+}
