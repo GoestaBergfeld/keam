@@ -33,6 +33,7 @@ import { NotificationService } from './notification.service';
 import { AttributeService } from './entities/attributes/attribute.service';
 import { RelationTypeService, RelationService } from './entities';
 import { NodeTypeService } from './entities/node-types/node-type.service';
+import { GenericTableComponent } from './components/generic-table/generic-table.component';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { NodeTypeService } from './entities/node-types/node-type.service';
   declarations: [
     ConfirmationModalComponent,
     EnumToArrayPipe,
-    TopbarComponent
+    TopbarComponent,
+    GenericTableComponent
   ],
   entryComponents: [
     ConfirmationModalComponent
@@ -89,7 +91,8 @@ import { NodeTypeService } from './entities/node-types/node-type.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GenericTableComponent
   ],
   providers: []
 })

@@ -4,9 +4,7 @@ import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { RelationType } from '@shared/entities';
 import { EntityTableComponent } from '@shared/components';
 import { RelationTypeService } from '@shared/entities';
-import { EntityTableStruct } from 'src/app/shared/entities/entity-table.model';
 import { RelationTypeEditModalComponent } from './relation-type-edit-modal/relation-type-edit-modal.component';
-// import { AttributeEditModalComponent } from './attribute-edit-modal/attribute-edit-modal.component';
 
 @Component({
   selector: 'app-relation-types',
@@ -25,17 +23,10 @@ export class RelationTypesComponent extends EntityTableComponent<RelationType> i
     super(relationTypeService, RelationTypeEditModalComponent, dialog);
   }
 
-  onChange() {
-    this.entityTableStruct.dataSource.data = (this.items) ? this.items : [];
-  }
-
   ngOnInit(): void {
-    this.entityTableStruct = new EntityTableStruct<RelationType>(this.paginator, this.sort, []);
-    this.relationTypeService.collection$.subscribe(relationTypes => {
-      this.items = relationTypes;
-      this.onChange();
-    });
-    this.onLoad();
+    super.onInitDataSource(this.paginator, this.sort);
+    super.onInitColumns(['Name', 'Description', 'Actions']);
+    super.ngOnInit();
   }
 
   onEdit(relationType: RelationType): void {

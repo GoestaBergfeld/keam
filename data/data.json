@@ -166,12 +166,16 @@
   "relation-types": [
     {
       "Id": 1,
-      "Name": "depends on",
+      "Name": "depends on2",
       "Description": ""
     },
     {
       "Name": "prior of",
       "Id": 2
+    },
+    {
+      "Name": "child of",
+      "Id": 3
     }
   ]
 }

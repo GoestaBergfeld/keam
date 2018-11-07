@@ -1,14 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatPaginator, MatSort, MatDialog } from '@angular/material';
+import { combineLatest } from 'rxjs';
 
-import { NodeService, Attribute, Node } from '@shared/entities';
+import { NodeService, Attribute, Node, AttributeService } from '@shared/entities';
 import { NodeTypeEnum } from '@shared/enums';
+import { EntityTableComponent } from '@shared/components';
 
 import { NodeEditModalComponent } from '../node-edit-modal/node-edit-modal.component';
-import { EntityTableStruct } from 'src/app/shared/entities/entity-table.model';
-import { EntityTableComponent } from 'src/app/shared/components/entity-table/entity-table.component';
-import { AttributeService } from 'src/app/shared/entities';
-import { Observable, forkJoin, of, zip, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-nodes',
@@ -33,25 +31,15 @@ export class NodesComponent extends EntityTableComponent<Node> implements OnInit
     super(nodeService, NodeEditModalComponent, dialog);
   }
 
-  onChangeNodeType() {
-    this.onPrepareTable();
-    this.entityTableStruct.dataSource.data = (this.items) ? this.items.filter(p => p.NodeType === this.nodeType) : [];
-  }
-
-  onPrepareTable() {
-    this.entityTableStruct = new EntityTableStruct<Node>(
-      this.paginator,
-      this.sort,
-      this.attributes.filter(p => p.AllowedNodeTypes.indexOf(this.nodeType) > -1).map(attribute => attribute.Name)
-    );
-  }
-
   ngOnInit(): void {
+    super.onInitDataSource(this.paginator, this.sort);
+    super.onInitColumns(['Name', 'Description', 'Actions']);
+    // super.ngOnInit();
     combineLatest(this.nodeService.collection$, this.attributeService.collection$).subscribe(data => {
       if (data[0] && data[1]) {
         this.items = <Node[]>data[0];
         this.attributes = data[1];
-        this.onChangeNodeType();
+        this.onChange();
       }
     });
     this.onLoad();
@@ -65,5 +53,18 @@ export class NodesComponent extends EntityTableComponent<Node> implements OnInit
       attributes: this.attributes
     });
   }
+
+  onChange() {
+    // this.onPrepareTable();
+    this.dataSource.data = (this.items) ? this.items.filter(p => p.NodeType === this.nodeType) : [];
+  }
+
+  // onPrepareTable() {
+  //   this.entityTableStruct = new EntityTableStruct<Node>(
+  //     this.paginator,
+  //     this.sort,
+  //     this.attributes.filter(p => p.AllowedNodeTypes.indexOf(this.nodeType) > -1).map(attribute => attribute.Name)
+  //   );
+  // }
 
 }

@@ -20,3 +20,8 @@ export class EntityTableStruct<T> {
   }
 
 }
+
+export interface EntityTableColumn {
+  name: string;
+  displayType: string;
+}

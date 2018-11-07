@@ -1,16 +1,36 @@
 import { ConfirmationModalComponent } from './../confirmation-modal/confirmation-modal.component';
 import { EntityTableStruct } from './../../entities/entity-table.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BaseEntityService } from '../../entities';
+import { OnInit } from '@angular/core';
 
-export abstract class EntityTableComponent<T> {
+export abstract class EntityTableComponent<T> implements OnInit {
 
-  entityTableStruct: EntityTableStruct<T>;
+  entityTableStruct: EntityTableStruct<T>;  // make this obsolete
   items: T[];
 
+  dataSource: MatTableDataSource<T>;
+  displayedColumns: string[];
+
   constructor(private service: BaseEntityService<T>, private editDialog: any, public dialog: MatDialog) {
-    this.entityTableStruct = new EntityTableStruct();
-    this.entityTableStruct.dataSource.data = [];
+  }
+
+  onInitDataSource(paginator: MatPaginator, sort: MatSort) {
+    this.dataSource = new MatTableDataSource<T>();
+    this.dataSource.paginator = paginator || null;
+    this.dataSource.sort = sort || null;
+  }
+
+  onInitColumns(columns: string[]) {
+    this.displayedColumns = columns;
+  }
+
+  ngOnInit() {
+    this.service.collection$.subscribe(items => {
+      this.items = items;
+      this.onChange();
+    });
+    this.onLoad();
   }
 
   onLoad() {
@@ -52,6 +72,10 @@ export abstract class EntityTableComponent<T> {
         this.service.delete(obj['Id']);
       }
     });
+  }
+
+  onChange() {
+    this.dataSource.data = (this.items) ? this.items : [];
   }
 
 }
