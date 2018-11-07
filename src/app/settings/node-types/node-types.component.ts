@@ -1,3 +1,4 @@
+import { AttributeDataType } from '@shared/enums';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 
@@ -25,7 +26,19 @@ export class NodeTypesComponent extends EntityTableComponent<NodeType> implement
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns(['Name', 'Description', 'Actions']);
+    super.onInitColumns([
+      {
+        Name: 'Name',
+        DataType: AttributeDataType.OneLineText
+      },
+      {
+        Name: 'Description',
+        DataType: AttributeDataType.MultiLineText
+      },
+      {
+        Name: 'Actions',
+        DataType: AttributeDataType.Actions
+      }]);
     super.ngOnInit();
   }
 

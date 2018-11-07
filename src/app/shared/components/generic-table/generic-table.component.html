@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="dataSource" matSort>
 
-  <ng-container *ngFor="let column of displayedColumns; let index = i" [matColumnDef]="column" [sticky]="(firstSticky && i === 0)" [stickyEnd]="(lastSticky && i === displayedColumns.length - 1)">
+  <ng-container *ngFor="let column of displayedColumns; let index = i" [matColumnDef]="column">
 
     <ng-container *ngIf="column !== 'Actions'">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column}} </th>

@@ -1,16 +1,17 @@
 import { ConfirmationModalComponent } from './../confirmation-modal/confirmation-modal.component';
-import { EntityTableStruct } from './../../entities/entity-table.model';
+import { EntityTableStruct, EntityTableColumn } from './../../entities/entity-table.model';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BaseEntityService } from '../../entities';
 import { OnInit } from '@angular/core';
 
 export abstract class EntityTableComponent<T> implements OnInit {
 
-  entityTableStruct: EntityTableStruct<T>;  // make this obsolete
+  // entityTableStruct: EntityTableStruct<T>;  // make this obsolete
   items: T[];
 
   dataSource: MatTableDataSource<T>;
   displayedColumns: string[];
+  entityTableColumns: EntityTableColumn[];
 
   constructor(private service: BaseEntityService<T>, private editDialog: any, public dialog: MatDialog) {
   }
@@ -21,8 +22,8 @@ export abstract class EntityTableComponent<T> implements OnInit {
     this.dataSource.sort = sort || null;
   }
 
-  onInitColumns(columns: string[]) {
-    this.displayedColumns = columns;
+  onInitColumns(columns: EntityTableColumn[]) {
+    this.displayedColumns = columns.map(col => col.Name);
   }
 
   ngOnInit() {

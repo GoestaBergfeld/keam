@@ -5,6 +5,7 @@ import { RelationType } from '@shared/entities';
 import { EntityTableComponent } from '@shared/components';
 import { RelationTypeService } from '@shared/entities';
 import { RelationTypeEditModalComponent } from './relation-type-edit-modal/relation-type-edit-modal.component';
+import { AttributeDataType } from '@shared/enums';
 
 @Component({
   selector: 'app-relation-types',
@@ -25,7 +26,20 @@ export class RelationTypesComponent extends EntityTableComponent<RelationType> i
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns(['Name', 'Description', 'Actions']);
+    super.onInitColumns([
+      {
+        Name: 'Name',
+        DataType: AttributeDataType.OneLineText
+      },
+      {
+        Name: 'Description',
+        DataType: AttributeDataType.MultiLineText
+      },
+      {
+        Name: 'Actions',
+        DataType: AttributeDataType.Actions
+      }
+    ]);
     super.ngOnInit();
   }
 

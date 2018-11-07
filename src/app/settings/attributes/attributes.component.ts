@@ -6,6 +6,7 @@ import { EntityTableComponent } from '@shared/components';
 import { AttributeService } from '@shared/entities';
 import { EntityTableStruct } from 'src/app/shared/entities/entity-table.model';
 import { AttributeEditModalComponent } from './attribute-edit-modal/attribute-edit-modal.component';
+import { AttributeDataType } from '@shared/enums';
 
 @Component({
   selector: 'app-attributes',
@@ -24,17 +25,39 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
     super(attributeService, AttributeEditModalComponent, dialog);
   }
 
-  onChange() {
-    this.entityTableStruct.dataSource.data = (this.items) ? this.items : [];
-  }
-
   ngOnInit(): void {
-    this.entityTableStruct = new EntityTableStruct<Attribute>(this.paginator, this.sort, ['DataType', 'Required', 'MultipleAllowed', 'AllowedNodeTypes']);
-    this.attributeService.collection$.subscribe(attributes => {
-      this.items = attributes;
-      this.onChange();
-    });
-    this.onLoad();
+    super.onInitDataSource(this.paginator, this.sort);
+    super.onInitColumns([
+      {
+        Name: 'Name',
+        DataType: AttributeDataType.OneLineText
+      },
+      {
+        Name: 'Description',
+        DataType: AttributeDataType.MultiLineText
+      },
+      {
+        Name: 'DataType',
+        DataType: AttributeDataType.OneLineText
+      },
+      {
+        Name: 'Required',
+        DataType: AttributeDataType.Boolean
+      },
+      {
+        Name: 'MultipleAllowed',
+        DataType: AttributeDataType.Boolean
+      },
+      {
+        Name: 'AllowedNodeTypes',
+        DataType: AttributeDataType.MultiLineText
+      },
+      {
+        Name: 'Actions',
+        DataType: AttributeDataType.Actions
+      }
+    ]);
+    super.ngOnInit();
   }
 
   onEdit(attribute: Attribute): void {

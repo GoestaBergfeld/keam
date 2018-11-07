@@ -3,5 +3,6 @@ export enum AttributeDataType {
   MultiLineText = 'MultiLineText',
   Date = 'Date',
   Boolean = 'Boolean',
-  Number = 'Number'
+  Number = 'Number',
+  Actions = 'Actions'
 }

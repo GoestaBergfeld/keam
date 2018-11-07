@@ -3,7 +3,7 @@ import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { combineLatest } from 'rxjs';
 
 import { NodeService, Attribute, Node, AttributeService } from '@shared/entities';
-import { NodeTypeEnum } from '@shared/enums';
+import { NodeTypeEnum, AttributeDataType } from '@shared/enums';
 import { EntityTableComponent } from '@shared/components';
 
 import { NodeEditModalComponent } from '../node-edit-modal/node-edit-modal.component';
@@ -33,7 +33,19 @@ export class NodesComponent extends EntityTableComponent<Node> implements OnInit
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns(['Name', 'Description', 'Actions']);
+    super.onInitColumns([
+    {
+      Name: 'Name',
+      DataType: AttributeDataType.OneLineText
+    },
+    {
+      Name: 'Description',
+      DataType: AttributeDataType.MultiLineText
+    },
+    {
+      Name: 'Actions',
+      DataType: AttributeDataType.Actions
+    }]);
     // super.ngOnInit();
     combineLatest(this.nodeService.collection$, this.attributeService.collection$).subscribe(data => {
       if (data[0] && data[1]) {

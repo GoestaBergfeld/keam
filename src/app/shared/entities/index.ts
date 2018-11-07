@@ -1,5 +1,6 @@
 export { BaseEntity } from './base-entity.model';
 export { BaseEntityService } from './base-entity.service';
+export { EntityTableColumn} from './entity-table.model';
 
 export { Attribute } from './attributes/attribute.model';
 export { AttributeService } from './attributes/attribute.service';

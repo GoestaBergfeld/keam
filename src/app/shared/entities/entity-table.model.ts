@@ -1,3 +1,4 @@
+import { AttributeDataType } from './../enums/AttributeDataType.enum';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 export class EntityTableStruct<T> {
@@ -22,6 +23,6 @@ export class EntityTableStruct<T> {
 }
 
 export interface EntityTableColumn {
-  name: string;
-  displayType: string;
+  Name: string;
+  DataType: AttributeDataType;
 }
