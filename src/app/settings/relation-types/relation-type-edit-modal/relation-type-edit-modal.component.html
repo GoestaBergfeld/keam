@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ relationType.Name }}</h2>
+<mat-dialog-content>
+  <form #form="ngForm" [formGroup]="relationTypeForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="Name" required>
+      <mat-error *ngIf="relationTypeForm.get('Name').hasError('required')">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="relationTypeForm.get('Name').hasError('minlength')">
+        Name has a minimum length of 3
+      </mat-error>
+      <mat-error *ngIf="relationTypeForm.get('Name').hasError('maxlength')">
+        Name has a maximum length of 160
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Description" formControlName="Description"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="onSave()">Save</button>
+</mat-dialog-actions>

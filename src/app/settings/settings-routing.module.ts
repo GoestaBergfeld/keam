@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AttributesComponent } from './attributes/attributes.component';
+import { NodeTypesComponent } from './node-types/node-types.component';
+import { RelationTypesComponent } from './relation-types/relation-types.component';
 
 const routes: Routes = [
   {
@@ -9,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'node-types',
-    component: AttributesComponent
+    component: NodeTypesComponent
   },
   {
     path: 'relation-types',
-    component: AttributesComponent
+    component: RelationTypesComponent
   },
   {
     path: '',

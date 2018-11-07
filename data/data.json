@@ -149,6 +149,29 @@
       "Description": "whatever"
     }
   ],
-  "node-types": [],
-  "relation-types": []
+  "node-types": [
+    {
+      "Name": "Information System",
+      "Id": 1
+    },
+    {
+      "Name": "Infrastructure",
+      "Id": 2
+    },
+    {
+      "Name": "Business Object",
+      "Id": 3
+    }
+  ],
+  "relation-types": [
+    {
+      "Id": 1,
+      "Name": "depends on",
+      "Description": ""
+    },
+    {
+      "Name": "prior of",
+      "Id": 2
+    }
+  ]
 }

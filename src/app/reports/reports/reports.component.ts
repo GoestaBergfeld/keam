@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-import { Relation, Node } from '@shared/entities';
+import { Relation, Node, NodeService, RelationService } from '@shared/entities';
 
 import * as go from 'gojs';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-reports',
@@ -19,6 +20,8 @@ export class ReportsComponent implements OnInit {
   private diagramRef: ElementRef;
 
   constructor(
+    private nodeService: NodeService,
+    private relationService: RelationService
   ) {
     const $ = go.GraphObject.make;
     this.diagram = new go.Diagram();
@@ -43,7 +46,7 @@ export class ReportsComponent implements OnInit {
   }
 
   private prepareDiagram() {
-    if (this.nodes && this.relations) {
+    // if (this.nodes && this.relations) {
       const nodes = [];
       const relations = [];
       this.nodes.forEach(node => {
@@ -61,11 +64,20 @@ export class ReportsComponent implements OnInit {
       });
       const model = new go.GraphLinksModel(nodes, relations);
       this.diagram.model = model;
-    }
+    // }
   }
 
   ngOnInit(): void {
     this.diagram.div = this.diagramRef.nativeElement;
+    this.nodeService.getAll();
+    this.relationService.getAll();
+    combineLatest(this.nodeService.collection$, this.relationService.collection$).subscribe(data => {
+      if (data[0] && data[1]) {
+        this.nodes = data[0];
+        this.relations = data[1];
+        this.prepareDiagram();
+      }
+    });
   }
 
 }

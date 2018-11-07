@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { BaseEntityService } from './../base-entity.service';
 import { Injectable } from '@angular/core';
-import { Relation } from './relation.model';
+import { NodeType } from './node-type.model';
 import { NotificationService } from '../../notification.service';
 
 @Injectable()
-export class RelationService extends BaseEntityService<Relation> {
+export class NodeTypeService extends BaseEntityService<NodeType> {
 
   constructor(httpClient: HttpClient, notificationService: NotificationService) {
-    super('api/relations', httpClient, notificationService);
+    super('api/node-types', httpClient, notificationService);
   }
 
 }

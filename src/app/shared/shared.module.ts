@@ -31,6 +31,8 @@ import { HttpHeadersInterceptor } from './http-interceptor';
 import { NodeService } from './entities/nodes/node.service';
 import { NotificationService } from './notification.service';
 import { AttributeService } from './entities/attributes/attribute.service';
+import { RelationTypeService, RelationService } from './entities';
+import { NodeTypeService } from './entities/node-types/node-type.service';
 
 @NgModule({
   imports: [
@@ -105,10 +107,12 @@ export class SharedModule {
           useClass: HttpHeadersInterceptor,
           multi: true
         },
-        // NodeCollectionResolver,
         NodeService,
         AttributeService,
-        NotificationService
+        NotificationService,
+        NodeTypeService,
+        RelationService,
+        RelationTypeService
       ]
     };
   }
