@@ -9,4 +9,5 @@ export interface Attribute extends BaseEntity {
   Required: boolean;
   MultipleAllowed: boolean;
   AllowedNodeTypeIds: number[];
+  AllowedNodeTypes?: string[];
 }

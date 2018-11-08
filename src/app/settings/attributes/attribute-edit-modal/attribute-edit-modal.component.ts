@@ -32,7 +32,7 @@ export class AttributeEditModalComponent implements OnInit {
     this.attributeForm.get('DataType').setValue(this.attribute.DataType);
     this.attributeForm.get('Required').setValue(this.attribute.Required);
     this.attributeForm.get('MultipleAllowed').setValue(this.attribute.MultipleAllowed);
-    this.attributeForm.get('AllowedNodeTypeIds').setValue(this.attribute.AllowedNodeTypeIds);
+    // this.attributeForm.get('AllowedNodeTypeIds').setValue(this.attribute.AllowedNodeTypeIds);
   }
 
   ngOnInit() {
@@ -44,7 +44,7 @@ export class AttributeEditModalComponent implements OnInit {
     this.attribute.DataType = this.attributeForm.get('DataType').value;
     this.attribute.Required = this.attributeForm.get('Required').value;
     this.attribute.MultipleAllowed = this.attributeForm.get('MultipleAllowed').value;
-    this.attribute.AllowedNodeTypeIds = this.attributeForm.get('AllowedNodeTypeIds').value;
+    // this.attribute.AllowedNodeTypeIds = this.attributeForm.get('AllowedNodeTypeIds').value;
     this.dialogRef.close(this.attribute);
   }
 }
