@@ -16,6 +16,16 @@
     <mat-form-field>
       <textarea matInput placeholder="Description" formControlName="Description"></textarea>
     </mat-form-field>
+    <div class="mat-form-field">
+      <!-- <input matInput placeholder="ColorCode" formControlName="ColorCode"/> -->
+      <span [style.background]="color"
+      [cpToggle]="true"
+      [cpDialogDisplay]="'inline'"
+      [cpAlphaChannel]="'disabled'"
+      [cpDisableInput]="false"
+      [cpCancelButton]="false"
+      [(colorPicker)]="color"></span>
+    </div>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>

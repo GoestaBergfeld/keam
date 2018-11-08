@@ -83,24 +83,32 @@
     },
     {
       "Name": "Risk",
-      "Description": "Risk",
+      "Description": "Risk to fail",
       "DataType": "Number",
       "AllowedNodeTypeIds": [
         2,
         3
       ],
-      "Id": 2
+      "Id": 2,
+      "AllowedNodeTypes": [
+        "Infrastructure",
+        "Business Object"
+      ]
     },
     {
-      "Name": "ServiceLine",
-      "Description": "Name of the service line which uses it",
+      "Name": "Service Lines",
+      "Description": "Name of the service lines which uses it",
       "DataType": "OneLineText",
       "AllowedNodeTypeIds": [
         1,
         2
       ],
       "Id": 3,
-      "MultipleAllowed": true
+      "MultipleAllowed": true,
+      "AllowedNodeTypes": [
+        "Information System",
+        "Infrastructure"
+      ]
     },
     {
       "Name": "Monthly Cost Avg.",

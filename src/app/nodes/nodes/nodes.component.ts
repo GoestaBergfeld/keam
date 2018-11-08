@@ -6,6 +6,7 @@ import { NodeService, Attribute, Node, AttributeService, NodeTypeService, NodeTy
 import { EntityTableComponent } from '@shared/components';
 
 import { NodeEditModalComponent } from '../node-edit-modal/node-edit-modal.component';
+import { AttributeDataType } from '@shared/enums';
 
 @Component({
   selector: 'app-nodes',

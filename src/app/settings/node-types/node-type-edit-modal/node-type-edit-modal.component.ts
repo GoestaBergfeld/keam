@@ -23,6 +23,7 @@ export class NodeTypeEditModalComponent implements OnInit {
     this.nodeType = data.nodeType;
     this.nodeTypeForm.get('Name').setValue(this.nodeType.Name);
     this.nodeTypeForm.get('Description').setValue(this.nodeType.Description);
+    // this.nodeTypeForm.get('ColorCode').setValue(this.nodeType.ColorCode);
   }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class NodeTypeEditModalComponent implements OnInit {
   onSave() {
     this.nodeType.Name = this.nodeTypeForm.get('Name').value;
     this.nodeType.Description = this.nodeTypeForm.get('Description').value;
+    this.nodeType.ColorCode = this.nodeTypeForm.get('ColorCode').value;
     this.dialogRef.close(this.nodeType);
   }
 }

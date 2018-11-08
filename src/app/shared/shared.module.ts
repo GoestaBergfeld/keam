@@ -20,6 +20,7 @@ import {
   MatSnackBarModule
 } from '@angular/material';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 import { EnumToArrayPipe } from './pipes/enumarray.pipe';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
@@ -58,7 +59,8 @@ import { GenericTableComponent } from './components/generic-table/generic-table.
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ColorPickerModule
   ],
   declarations: [
     ConfirmationModalComponent,
@@ -92,7 +94,8 @@ import { GenericTableComponent } from './components/generic-table/generic-table.
     MatNativeDateModule,
     MatTabsModule,
     MatSnackBarModule,
-    GenericTableComponent
+    GenericTableComponent,
+    ColorPickerModule
   ],
   providers: []
 })

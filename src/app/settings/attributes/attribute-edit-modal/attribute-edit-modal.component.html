@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ attribute.Name }}</h2>
 <mat-dialog-content>
-  <form #form="ngForm" [formGroup]="attributeForm" (submit)="ngForm.valid && onSave()">
+  <form #form="ngForm" [formGroup]="attributeForm" (ngSubmit)="form.valid && onSave()">
     <mat-form-field>
       <input matInput placeholder="Name" formControlName="Name" required>
       <mat-error *ngIf="attributeForm.get('Name').hasError('required')">
@@ -42,7 +42,3 @@
     </div>
   </form>
 </mat-dialog-content>
-<!-- <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="onSave()">Save</button>
-</mat-dialog-actions> -->

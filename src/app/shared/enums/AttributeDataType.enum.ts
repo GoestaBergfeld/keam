@@ -8,5 +8,6 @@ export enum AttributeDataType {
   LookupEntity = 'LookupEntity',
   Enum = 'Enum',
   EnumName = 'EnumName',
+  ColorCode = 'ColorCode',
   Actions = 'Actions'
 }

@@ -2,7 +2,7 @@ import { AttributeDataType } from '@shared/enums';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatDialog } from '@angular/material';
 
-import { NodeType } from '@shared/entities';
+import { NodeType, Attribute } from '@shared/entities';
 import { EntityTableComponent } from '@shared/components';
 import { NodeTypeService } from '@shared/entities';
 import { NodeTypeEditModalComponent } from './node-type-edit-modal/node-type-edit-modal.component';
@@ -17,6 +17,14 @@ export class NodeTypesComponent extends EntityTableComponent<NodeType> implement
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  private defaultColumns = [
+    {
+      Name: 'ColorCode',
+      DataType: AttributeDataType.ColorCode,
+      Required: false
+    }
+  ] as Attribute[];
+
   constructor(
     public dialog: MatDialog,
     private nodeTypeService: NodeTypeService
@@ -26,6 +34,7 @@ export class NodeTypesComponent extends EntityTableComponent<NodeType> implement
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
+    super.onInitColumns(this.defaultColumns);
     super.ngOnInit();
   }
 
