@@ -1,3 +1,4 @@
+import { Attribute } from '@shared/entities';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
@@ -10,6 +11,7 @@ export class GenericTableComponent {
 
   @Input() dataSource: MatTableDataSource<any>;
   @Input() displayedColumns: string[];
+  @Input() columnAttributes: Attribute[];
   @Input() firstSticky: boolean;
   @Input() lastSticky: boolean;
 

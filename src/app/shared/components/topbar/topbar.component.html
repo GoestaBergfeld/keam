@@ -4,10 +4,10 @@
     <span>KEAM</span>
   </div>
   <div class="left">
-    <button mat-button [routerLink]="['nodes']">
+    <button mat-button [routerLink]="['nodes']" routerLinkActive="bg-lighten">
       Catalog
     </button>
-    <button mat-button [routerLink]="['reports']">
+    <button mat-button [routerLink]="['reports']" routerLinkActive="bg-lighten">
       Report
     </button>
   </div>
@@ -19,13 +19,13 @@
 </mat-toolbar>
 
 <mat-menu #settingsMenu="matMenu">
-  <button mat-menu-item [routerLink]="['settings','attributes']">
+  <button mat-menu-item [routerLink]="['settings','attributes']" routerLinkActive="bg-darken">
     <mat-icon>view_list</mat-icon> Attributes
   </button>
-  <button mat-menu-item [routerLink]="['settings','node-types']">
+  <button mat-menu-item [routerLink]="['settings','node-types']" routerLinkActive="bg-darken">
     <mat-icon>web_asset</mat-icon> Node Types
   </button>
-  <button mat-menu-item [routerLink]="['settings','relation-types']">
+  <button mat-menu-item [routerLink]="['settings','relation-types']" routerLinkActive="bg-darken">
     <mat-icon>compare_arrows</mat-icon> Relation Types
   </button>
 </mat-menu>

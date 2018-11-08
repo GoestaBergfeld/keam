@@ -18,6 +18,26 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  private defaultColumns = [
+    {
+      Name: 'DataType',
+      DataType: AttributeDataType.Enum,
+      Required: true
+    },
+    {
+      Name: 'Required',
+      DataType: AttributeDataType.Boolean,
+    },
+    {
+      Name: 'MultipleAllowed',
+      DataType: AttributeDataType.Boolean,
+    },
+    {
+      Name: 'AllowedNodeTypes',
+      DataType: AttributeDataType.Lookup,
+    }
+  ] as Attribute[];
+
   constructor(
     public dialog: MatDialog,
     private attributeService: AttributeService
@@ -27,36 +47,7 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns([
-      {
-        Name: 'Name',
-        DataType: AttributeDataType.OneLineText
-      },
-      {
-        Name: 'Description',
-        DataType: AttributeDataType.MultiLineText
-      },
-      {
-        Name: 'DataType',
-        DataType: AttributeDataType.OneLineText
-      },
-      {
-        Name: 'Required',
-        DataType: AttributeDataType.Boolean
-      },
-      {
-        Name: 'MultipleAllowed',
-        DataType: AttributeDataType.Boolean
-      },
-      {
-        Name: 'AllowedNodeTypes',
-        DataType: AttributeDataType.MultiLineText
-      },
-      {
-        Name: 'Actions',
-        DataType: AttributeDataType.Actions
-      }
-    ]);
+    super.onInitColumns(this.defaultColumns);
     super.ngOnInit();
   }
 

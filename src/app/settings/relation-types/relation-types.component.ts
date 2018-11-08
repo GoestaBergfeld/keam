@@ -26,20 +26,6 @@ export class RelationTypesComponent extends EntityTableComponent<RelationType> i
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns([
-      {
-        Name: 'Name',
-        DataType: AttributeDataType.OneLineText
-      },
-      {
-        Name: 'Description',
-        DataType: AttributeDataType.MultiLineText
-      },
-      {
-        Name: 'Actions',
-        DataType: AttributeDataType.Actions
-      }
-    ]);
     super.ngOnInit();
   }
 

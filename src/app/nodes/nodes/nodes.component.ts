@@ -33,20 +33,7 @@ export class NodesComponent extends EntityTableComponent<Node> implements OnInit
 
   ngOnInit(): void {
     super.onInitDataSource(this.paginator, this.sort);
-    super.onInitColumns([
-    {
-      Name: 'Name',
-      DataType: AttributeDataType.OneLineText
-    },
-    {
-      Name: 'Description',
-      DataType: AttributeDataType.MultiLineText
-    },
-    {
-      Name: 'Actions',
-      DataType: AttributeDataType.Actions
-    }]);
-    // super.ngOnInit();
+    super.onInitColumns();
     combineLatest(this.nodeService.collection$, this.attributeService.collection$).subscribe(data => {
       if (data[0] && data[1]) {
         this.items = <Node[]>data[0];

@@ -1,19 +1,56 @@
+import { Attribute } from '@shared/entities';
 import { ConfirmationModalComponent } from './../confirmation-modal/confirmation-modal.component';
-import { EntityTableStruct, EntityTableColumn } from './../../entities/entity-table.model';
 import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { BaseEntityService } from '../../entities';
 import { OnInit } from '@angular/core';
+import { AttributeDataType } from '@shared/enums';
 
 export abstract class EntityTableComponent<T> implements OnInit {
 
-  // entityTableStruct: EntityTableStruct<T>;  // make this obsolete
   items: T[];
 
   dataSource: MatTableDataSource<T>;
-  displayedColumns: string[];
-  entityTableColumns: EntityTableColumn[];
+  columnAttributes: Attribute[];
+
+  private defaultStartColumns = [
+    {
+      Id: null,
+      Name: 'Name',
+      Description: '',
+      Required: false,
+      MultipleAllowed: false,
+      AllowedNodeTypes: null,
+      DataType: AttributeDataType.OneLineText
+    },
+    {
+      Id: null,
+      Name: 'Description',
+      Description: '',
+      Required: false,
+      MultipleAllowed: false,
+      AllowedNodeTypes: null,
+      DataType: AttributeDataType.MultiLineText
+    }
+  ];
+
+  private defaultEndColumns = [
+    {
+      Id: null,
+      Name: 'Actions',
+      Description: '',
+      Required: false,
+      MultipleAllowed: false,
+      AllowedNodeTypes: null,
+      DataType: AttributeDataType.Actions
+    }
+  ];
+
+  get displayedColumns(): string[] {
+    return this.columnAttributes.map(col => col.Name);
+  }
 
   constructor(private service: BaseEntityService<T>, private editDialog: any, public dialog: MatDialog) {
+    this.onInitColumns();
   }
 
   onInitDataSource(paginator: MatPaginator, sort: MatSort) {
@@ -22,8 +59,11 @@ export abstract class EntityTableComponent<T> implements OnInit {
     this.dataSource.sort = sort || null;
   }
 
-  onInitColumns(columns: EntityTableColumn[]) {
-    this.displayedColumns = columns.map(col => col.Name);
+  onInitColumns(columns: Attribute[] = []) {
+    this.columnAttributes =
+      this.defaultStartColumns
+      .concat(columns)
+      .concat(this.defaultEndColumns);
   }
 
   ngOnInit() {

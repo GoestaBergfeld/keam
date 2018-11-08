@@ -64,3 +64,11 @@ a.mat-button {
 .flex {
   display: flex;
 }
+
+.bg-lighten {
+  background-color: rgba(255, 255, 255, .2) !important;
+}
+
+.bg-darken {
+  background-color: rgba(0, 0, 0, .2) !important;
+}

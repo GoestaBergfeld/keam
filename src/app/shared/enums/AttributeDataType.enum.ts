@@ -4,5 +4,9 @@ export enum AttributeDataType {
   Date = 'Date',
   Boolean = 'Boolean',
   Number = 'Number',
+  Lookup = 'Lookup',
+  LookupEntity = 'LookupEntity',
+  Enum = 'Enum',
+  EnumName = 'EnumName',
   Actions = 'Actions'
 }
