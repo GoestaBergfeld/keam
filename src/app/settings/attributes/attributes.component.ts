@@ -33,7 +33,7 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
       DataType: AttributeDataType.Boolean,
     },
     {
-      Name: 'AllowedNodeTypes',
+      Name: 'AllowedNodeTypeIds',
       DataType: AttributeDataType.Lookup,
     }
   ] as Attribute[];

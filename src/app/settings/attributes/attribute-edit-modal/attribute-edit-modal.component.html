@@ -29,13 +29,13 @@
     <div class="mat-form-field">
       <mat-checkbox formControlName="MultipleAllowed">MultipleAllowed</mat-checkbox>
     </div>
-    <mat-form-field>
-      <mat-select placeholder="AllowedNodeTypes" formControlName="AllowedNodeTypes" multiple>
+    <!-- <mat-form-field>
+      <mat-select placeholder="AllowedNodeTypeIds" formControlName="AllowedNodeTypeIds" multiple>
         <mat-option *ngFor="let nodeType of nodeTypes | enumToArray" [value]="nodeType">
           {{nodeType}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>

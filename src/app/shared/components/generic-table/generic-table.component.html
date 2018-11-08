@@ -14,6 +14,18 @@
       <td mat-cell *matCellDef="let element"> {{element[column.Name]}} </td>
     </ng-container>
 
+    <!-- Date -->
+    <ng-container *ngIf="column.DataType === 'Date'">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.Name}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column.Name] | date}} </td>
+    </ng-container>
+
+    <!-- Number -->
+    <ng-container *ngIf="column.DataType === 'Number'">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.Name}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column.Name]}} </td>
+    </ng-container>
+
     <!-- Enum -->
     <ng-container *ngIf="column.DataType === 'Enum'">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column.Name}} </th>

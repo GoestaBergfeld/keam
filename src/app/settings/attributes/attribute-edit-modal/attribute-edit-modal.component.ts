@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Attribute } from '@shared/entities';
-import { NodeTypeEnum, AttributeDataType } from '@shared/enums';
+import { AttributeDataType } from '@shared/enums';
 
 @Component({
   selector: 'app-attribute-edit-modal',
@@ -15,7 +15,6 @@ export class AttributeEditModalComponent implements OnInit {
 
   attribute: Attribute;
   dataTypes = AttributeDataType;
-  nodeTypes = NodeTypeEnum;
 
   attributeForm = new FormGroup({
     Name: new FormControl(Validators.required, Validators.compose([Validators.minLength(3), Validators.maxLength(160)])),
@@ -33,7 +32,7 @@ export class AttributeEditModalComponent implements OnInit {
     this.attributeForm.get('DataType').setValue(this.attribute.DataType);
     this.attributeForm.get('Required').setValue(this.attribute.Required);
     this.attributeForm.get('MultipleAllowed').setValue(this.attribute.MultipleAllowed);
-    this.attributeForm.get('AllowedNodeTypes').setValue(this.attribute.AllowedNodeTypes);
+    this.attributeForm.get('AllowedNodeTypeIds').setValue(this.attribute.AllowedNodeTypeIds);
   }
 
   ngOnInit() {
@@ -45,7 +44,7 @@ export class AttributeEditModalComponent implements OnInit {
     this.attribute.DataType = this.attributeForm.get('DataType').value;
     this.attribute.Required = this.attributeForm.get('Required').value;
     this.attribute.MultipleAllowed = this.attributeForm.get('MultipleAllowed').value;
-    this.attribute.AllowedNodeTypes = this.attributeForm.get('AllowedNodeTypes').value;
+    this.attribute.AllowedNodeTypeIds = this.attributeForm.get('AllowedNodeTypeIds').value;
     this.dialogRef.close(this.attribute);
   }
 }

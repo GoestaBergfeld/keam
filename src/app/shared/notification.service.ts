@@ -4,8 +4,9 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 @Injectable()
 export class NotificationService {
 
-  config = {
-    duration: 1000
+  config: MatSnackBarConfig = {
+    duration: 1000,
+    verticalPosition: 'top'
   };
 
   constructor(private snackbar: MatSnackBar) {}

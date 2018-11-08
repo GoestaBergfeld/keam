@@ -3,7 +3,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Relation, Node } from '@shared/entities';
-import { NodeRelationType } from '@shared/enums';
 
 @Component({
   selector: 'app-relation-edit-modal',
@@ -15,7 +14,6 @@ export class RelationEditModalComponent implements OnInit {
 
   relation: Relation;
   nodes: Node[];
-  relationTypes = NodeRelationType;
 
   relationForm = new FormGroup({
     StartNodeId: new FormControl(),
@@ -31,7 +29,7 @@ export class RelationEditModalComponent implements OnInit {
     this.relation = data.relation;
     this.relationForm.get('StartNodeId').setValue(this.relation.StartNodeId);
     this.relationForm.get('EndNodeId').setValue(this.relation.EndNodeId);
-    this.relationForm.get('RelationType').setValue(this.relation.RelationType);
+    this.relationForm.get('RelationTypeId').setValue(this.relation.RelationTypeId);
     this.relationForm.get('Description').setValue(this.relation.Description);
   }
 
@@ -41,7 +39,7 @@ export class RelationEditModalComponent implements OnInit {
   onSave() {
     this.relation.StartNodeId = this.relationForm.get('StartNodeId').value;
     this.relation.EndNodeId = this.relationForm.get('EndNodeId').value;
-    this.relation.RelationType = this.relationForm.get('RelationType').value;
+    this.relation.RelationTypeId = this.relationForm.get('RelationTypeId').value;
     this.relation.Description = this.relationForm.get('Description').value;
     this.dialogRef.close(this.relation);
   }

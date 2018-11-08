@@ -2,68 +2,68 @@
   "nodes": [
     {
       "Id": 1,
-      "Name": "ONE 2.0",
+      "Name": "Recruiter",
       "Description": "Internal Recruiting",
-      "NodeType": "InformationSystem",
+      "NodeTypeId": 1,
       "NodeAttributes": []
     },
     {
       "Id": 2,
-      "Name": "eComp",
-      "Description": "Compensation Portal",
-      "NodeType": "InformationSystem",
+      "Name": "Money Money Money",
+      "Description": "Compensation Platform",
+      "NodeTypeId": 1,
       "NodeAttributes": []
     },
     {
       "Id": 5,
-      "Name": "evelop.me",
+      "Name": "Coaching 'em all",
       "Description": "Online Coaching Platform",
-      "NodeType": "InformationSystem",
+      "NodeTypeId": 1,
       "NodeAttributes": []
     },
     {
       "Id": 7,
       "Name": "prod04-ex",
       "Description": "Virtual Machine on Windows 2000",
-      "NodeType": "Infrastructure",
+      "NodeTypeId": 3,
       "NodeAttributes": []
     },
     {
-      "Name": "myCareerGate",
-      "Description": "Jobportal",
-      "NodeType": "InformationSystem",
+      "Name": "career to the top",
+      "Description": "Jobs",
+      "NodeTypeId": 1,
       "Id": 8
     },
     {
       "Name": "Person",
       "Description": "Personen",
-      "NodeType": "BusinessObject",
+      "NodeTypeId": 2,
       "Id": 9
     },
     {
       "Name": "Customer",
-      "NodeType": "BusinessObject",
+      "NodeTypeId": 2,
       "Id": 11
     },
     {
       "Name": "Project",
-      "NodeType": "BusinessObject",
+      "NodeTypeId": 2,
       "Id": 12
     },
     {
       "Name": "prod05-ex",
-      "NodeType": "Infrastructure",
+      "NodeTypeId": 3,
       "Id": 14
     },
     {
       "Name": "prod01-in",
-      "NodeType": "Infrastructure",
+      "NodeTypeId": 3,
       "Id": 15
     },
     {
-      "Name": "VDB",
-      "Description": "Vergütungsdatenbank",
-      "NodeType": "InformationSystem",
+      "Name": "CDB",
+      "Description": "Compensation Database",
+      "NodeTypeId": 1,
       "Id": 16
     }
   ],
@@ -75,19 +75,19 @@
       "DataType": "Date",
       "Required": true,
       "MultipleAllowed": true,
-      "AllowedNodeTypes": [
-        "BusinessObject",
-        "InformationSystem",
-        "Infrastructure"
+      "AllowedNodeTypeIds": [
+        1,
+        2,
+        3
       ]
     },
     {
       "Name": "Risk",
       "Description": "Risk",
       "DataType": "Number",
-      "AllowedNodeTypes": [
-        "InformationSystem",
-        "Infrastructure"
+      "AllowedNodeTypeIds": [
+        2,
+        3
       ],
       "Id": 2
     },
@@ -95,9 +95,9 @@
       "Name": "ServiceLine",
       "Description": "Name of the service line which uses it",
       "DataType": "OneLineText",
-      "AllowedNodeTypes": [
-        "BusinessObject",
-        "InformationSystem"
+      "AllowedNodeTypeIds": [
+        1,
+        2
       ],
       "Id": 3,
       "MultipleAllowed": true
@@ -106,8 +106,8 @@
       "Name": "Monthly Cost Avg.",
       "Description": "Average monthly costs",
       "DataType": "Number",
-      "AllowedNodeTypes": [
-        "Infrastructure"
+      "AllowedNodeTypeIds": [
+        3
       ],
       "Id": 4
     }
@@ -166,7 +166,7 @@
   "relation-types": [
     {
       "Id": 1,
-      "Name": "depends on2",
+      "Name": "depends on",
       "Description": ""
     },
     {

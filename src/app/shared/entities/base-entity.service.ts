@@ -28,7 +28,7 @@ export abstract class BaseEntityService<T> {
   getAll(force?: boolean): void {
     if (!this.collection.value || force) {
       this.loading.next(true);
-      this.http.get<T[]>(`${this.endpoint}`).subscribe(collection => {
+      this.http.get<T[]>(`${this.endpoint}?_sort=Name&_order=asc`).subscribe(collection => {
         this.loading.next(false);
         this.loaded.next(true);
         this.collection.next(collection);

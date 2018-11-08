@@ -1,6 +1,5 @@
 
 import { Component, OnInit } from '@angular/core';
-import { NodeTypeEnum } from '@shared/enums';
 
 @Component({
   selector: 'app-topbar',
@@ -8,8 +7,6 @@ import { NodeTypeEnum } from '@shared/enums';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent implements OnInit {
-
-  nodeTypes = NodeTypeEnum;
 
   ngOnInit(): void {}
 

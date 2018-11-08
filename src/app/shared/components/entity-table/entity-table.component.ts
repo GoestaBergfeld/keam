@@ -19,7 +19,7 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypes: null,
+      AllowedNodeTypeIds: null,
       DataType: AttributeDataType.OneLineText
     },
     {
@@ -28,7 +28,7 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypes: null,
+      AllowedNodeTypeIds: null,
       DataType: AttributeDataType.MultiLineText
     }
   ];
@@ -40,7 +40,7 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypes: null,
+      AllowedNodeTypeIds: null,
       DataType: AttributeDataType.Actions
     }
   ];

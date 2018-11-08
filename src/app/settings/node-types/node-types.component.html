@@ -1,17 +1,16 @@
 <mat-toolbar color="default">
   <span class="flex-1">NodeTypes</span>
-  <button mat-button (click)="onAdd()" color="primary"><mat-icon>add</mat-icon></button>
-  <button mat-button (click)="onRefresh()" color="primary"><mat-icon>refresh</mat-icon></button>
+  <button mat-button (click)="onAdd()"><mat-icon>add</mat-icon></button>
+  <button mat-button (click)="onRefresh()"><mat-icon>refresh</mat-icon></button>
 </mat-toolbar>
 
 <div class="table-container">
   <app-generic-table
     [dataSource]="dataSource"
     [displayedColumns]="displayedColumns"
+    [columnAttributes]="columnAttributes"
     (edit)="onEdit($event)"
-    (delete)="onDelete($event)"
-    [firstSticky]="true"
-    [lastSticky]="true">
+    (delete)="onDelete($event)">
   </app-generic-table>
 </div>
 <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>

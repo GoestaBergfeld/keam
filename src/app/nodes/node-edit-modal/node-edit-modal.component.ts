@@ -4,7 +4,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ConfirmationModalComponent } from '@shared/components';
 import { Relation, Attribute, Node } from '@shared/entities';
-import { NodeTypeEnum, NodeRelationType } from '@shared/enums';
 
 import { RelationEditModalComponent } from '../relation-edit-modal/relation-edit-modal.component';
 
@@ -20,7 +19,7 @@ export class NodeEditModalComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   node: Node;
-  nodeType: NodeTypeEnum;
+  nodeTypeId: number;
   attributes: Attribute[];
   relations: Relation[];
   nodes: Node[];
@@ -39,7 +38,7 @@ export class NodeEditModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog) {
     this.node = data.node;
-    this.nodeType = data.nodeType;
+    this.nodeTypeId = data.nodeTypeId;
     this.attributes = data.attributes;
     this.nodeForm.get('Name').setValue(this.node.Name);
     this.nodeForm.get('Description').setValue(this.node.Description);
@@ -69,7 +68,7 @@ export class NodeEditModalComponent implements OnInit {
   onSave() {
     this.node.Name = this.nodeForm.get('Name').value;
     this.node.Description = this.nodeForm.get('Description').value;
-    this.node.NodeType = this.node.NodeType || this.nodeType;
+    this.node.NodeTypeId = this.node.NodeTypeId || this.nodeTypeId;
     this.dialogRef.close(this.node);
   }
 
@@ -78,7 +77,7 @@ export class NodeEditModalComponent implements OnInit {
       Id: null,
       StartNodeId: this.node.Id,
       EndNodeId: null,
-      RelationType: NodeRelationType.OneWay,
+      RelationTypeId: null,
       Description: ''
     };
     this.onEditRelation(newRelation);

@@ -1,13 +1,10 @@
 <mat-toolbar color="default">
-  <mat-form-field>
-    <mat-select float="never" [(ngModel)]="nodeType" (selectionChange)="onChange()">
-      <mat-option *ngFor="let nodeType of nodeTypes | enumToArray" [value]="nodeType">
-        {{nodeType}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button (click)="onAdd()" color="primary"><mat-icon>add</mat-icon></button>
-  <button mat-button (click)="onRefresh()" color="primary"><mat-icon>refresh</mat-icon></button>
+  <span class="flex-1">Node</span>
+  <button mat-button [matMenuTriggerFor]="nodeTypesMenu">
+    {{ (selectedNodeType) ? selectedNodeType.Name : 'NodeType'  }} <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <button mat-button (click)="onAdd()"><mat-icon>add</mat-icon></button>
+  <button mat-button (click)="onRefresh()"><mat-icon>refresh</mat-icon></button>
 </mat-toolbar>
 
 <div class="table-container">
@@ -15,12 +12,17 @@
   <app-generic-table
     [dataSource]="dataSource"
     [displayedColumns]="displayedColumns"
+    [columnAttributes]="columnAttributes"
     (edit)="onEdit($event)"
-    (delete)="onDelete($event)"
-    [firstSticky]="true"
-    [lastSticky]="true">
+    (delete)="onDelete($event)">
   </app-generic-table>
 
 </div>
 
 <mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
+
+<mat-menu #nodeTypesMenu="matMenu">
+  <button mat-menu-item *ngFor="let nodeType of (nodeTypeService.collection$ | async)" (click)="selectedNodeType=nodeType; onChange()">
+    {{ nodeType.Name }}
+  </button>
+</mat-menu>

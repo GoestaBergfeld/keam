@@ -1,5 +1,4 @@
 import { BaseEntity } from '../base-entity.model';
-import { NodeRelationType } from '../../enums/NodeRelationType.enum';
 import { Node } from './../nodes/node.model';
 
 export interface Relation extends BaseEntity {
@@ -7,6 +6,6 @@ export interface Relation extends BaseEntity {
   StartNode?: Node;
   EndNodeId: number;
   EndNode?: Node;
-  RelationType: NodeRelationType;
+  RelationTypeId: number;
   Description: string;
 }

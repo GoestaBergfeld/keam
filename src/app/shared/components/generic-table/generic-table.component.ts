@@ -12,8 +12,8 @@ export class GenericTableComponent {
   @Input() dataSource: MatTableDataSource<any>;
   @Input() displayedColumns: string[];
   @Input() columnAttributes: Attribute[];
-  @Input() firstSticky: boolean;
-  @Input() lastSticky: boolean;
+  // @Input() firstSticky: boolean;
+  // @Input() lastSticky: boolean;
 
   @Output() edit: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<any> = new EventEmitter();
