@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>{{ nodeType.Name }}</h2>
 <mat-dialog-content>
-  <form #form="ngForm" [formGroup]="nodeTypeForm">
+  <form #form="ngForm" [formGroup]="nodeTypeForm" (ngSubmit)="form.valid && onSave()">
     <mat-form-field>
       <input matInput placeholder="Name" formControlName="Name" required>
       <mat-error *ngIf="nodeTypeForm.get('Name').hasError('required')">
@@ -17,18 +17,14 @@
       <textarea matInput placeholder="Description" formControlName="Description"></textarea>
     </mat-form-field>
     <div class="mat-form-field">
-      <!-- <input matInput placeholder="ColorCode" formControlName="ColorCode"/> -->
-      <span [style.background]="color"
-      [cpToggle]="true"
-      [cpDialogDisplay]="'inline'"
-      [cpAlphaChannel]="'disabled'"
-      [cpDisableInput]="false"
-      [cpCancelButton]="false"
-      [(colorPicker)]="color"></span>
+      <div class="color-preview" [style.background]="colorCode" (click)="showColorPicker=!showColorPicker" [style.color]="colorCode ? 'white' : 'black'">
+        {{ colorCode || 'Pick Color' }}
+      </div>
+      <span [(colorPicker)]="colorCode" [cpAlphaChannel]="'disabled'" [cpDisableInput]="false" [cpToggle]="showColorPicker"></span>
+    </div>
+    <div class="dialog-tab-actions">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button type="submit" color="primary">Save</button>
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="onSave()">Save</button>
-</mat-dialog-actions>

@@ -1,4 +1,4 @@
-<mat-toolbar color="default">
+<mat-toolbar color="default" [style.background]="selectedNodeType ? selectedNodeType.ColorCode : 'unset'" [style.color]="'white'">
   <span class="flex-1">Node</span>
   <button mat-button [matMenuTriggerFor]="nodeTypesMenu">
     {{ (selectedNodeType) ? selectedNodeType.Name : 'NodeType'  }} <mat-icon>arrow_drop_down</mat-icon>

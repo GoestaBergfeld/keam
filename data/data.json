@@ -160,15 +160,18 @@
   "node-types": [
     {
       "Name": "Information System",
-      "Id": 1
+      "Id": 1,
+      "ColorCode": "#0bb1b8"
     },
     {
       "Name": "Infrastructure",
-      "Id": 2
+      "Id": 2,
+      "ColorCode": "#a717c0"
     },
     {
       "Name": "Business Object",
-      "Id": 3
+      "Id": 3,
+      "ColorCode": "#e31b1b"
     }
   ],
   "relation-types": [

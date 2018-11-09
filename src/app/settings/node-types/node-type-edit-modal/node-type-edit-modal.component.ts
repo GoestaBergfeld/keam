@@ -13,26 +13,32 @@ import { NodeType } from '@shared/entities';
 export class NodeTypeEditModalComponent implements OnInit {
 
   nodeType: NodeType;
+  showColorPicker = false;
+  colorCode: string;
 
   nodeTypeForm = new FormGroup({
     Name: new FormControl(Validators.required, Validators.compose([Validators.minLength(3), Validators.maxLength(160)])),
-    Description: new FormControl(),
+    Description: new FormControl()
   });
 
   constructor(public dialogRef: MatDialogRef<NodeTypeEditModalComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.nodeType = data.nodeType;
     this.nodeTypeForm.get('Name').setValue(this.nodeType.Name);
     this.nodeTypeForm.get('Description').setValue(this.nodeType.Description);
-    // this.nodeTypeForm.get('ColorCode').setValue(this.nodeType.ColorCode);
+    this.colorCode = this.nodeType.ColorCode;
   }
 
   ngOnInit() {
   }
 
+  onShowColorPicker() {
+    this.showColorPicker = true;
+  }
+
   onSave() {
     this.nodeType.Name = this.nodeTypeForm.get('Name').value;
     this.nodeType.Description = this.nodeTypeForm.get('Description').value;
-    this.nodeType.ColorCode = this.nodeTypeForm.get('ColorCode').value;
+    this.nodeType.ColorCode = this.colorCode;
     this.dialogRef.close(this.nodeType);
   }
 }
