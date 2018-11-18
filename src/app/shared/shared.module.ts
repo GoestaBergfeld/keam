@@ -32,7 +32,7 @@ import { HttpHeadersInterceptor } from './http-interceptor';
 import { NodeService } from './entities/nodes/node.service';
 import { NotificationService } from './notification.service';
 import { AttributeService } from './entities/attributes/attribute.service';
-import { RelationTypeService, RelationService } from './entities';
+import { RelationTypeService, RelationService, NodeAttributeService, AttributeNodeTypeService } from './entities';
 import { NodeTypeService } from './entities/node-types/node-type.service';
 import { GenericTableComponent } from './components/generic-table/generic-table.component';
 
@@ -113,12 +113,14 @@ export class SharedModule {
           useClass: HttpHeadersInterceptor,
           multi: true
         },
-        NodeService,
         AttributeService,
-        NotificationService,
+        NodeService,
+        NodeAttributeService,
         NodeTypeService,
+        NotificationService,
         RelationService,
-        RelationTypeService
+        RelationTypeService,
+        AttributeNodeTypeService
       ]
     };
   }

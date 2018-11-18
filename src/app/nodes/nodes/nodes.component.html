@@ -14,7 +14,8 @@
     [displayedColumns]="displayedColumns"
     [columnAttributes]="columnAttributes"
     (edit)="onEdit($event)"
-    (delete)="onDelete($event)">
+    (delete)="onDelete($event)"
+    *ngIf="tableDataLoaded">
   </app-generic-table>
 
 </div>

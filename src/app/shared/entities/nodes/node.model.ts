@@ -1,5 +1,6 @@
-import { NodeAttribute } from './../../models/NodeAttribute.model';
-
+import { NodeType } from './../node-types/node-type.model';
+import { Relation } from './../relations/relation.model';
+import { NodeAttribute } from './../node-attributes/node-attribute.model';
 import { BaseEntity } from '../base-entity.model';
 
 export interface Node extends BaseEntity {
@@ -7,5 +8,8 @@ export interface Node extends BaseEntity {
   Description: string;
   NodeTypeId: number;
   NodeAttributes: NodeAttribute[];
+  StartRelations: Relation[];
+  EndRelations: Relation[];
+  NodeType: NodeType;
 }
 

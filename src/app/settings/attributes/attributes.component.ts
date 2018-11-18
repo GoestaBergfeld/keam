@@ -23,23 +23,28 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
     {
       Name: 'DataType',
       DataType: AttributeDataType.Enum,
-      Required: true
+      Required: true,
+      GetValue: (item: any) => {
+        return item['DataType'];
+      }
     },
     {
       Name: 'Required',
       DataType: AttributeDataType.Boolean,
+      GetValue: (item: any) => {
+        return item['Required'];
+      }
     },
     {
       Name: 'MultipleAllowed',
       DataType: AttributeDataType.Boolean,
-    },
-    {
-      Name: 'AllowedNodeTypes',
-      DataType: AttributeDataType.OneLineText,
+      GetValue: (item: any) => {
+        return item['MultipleAllowed'];
+      }
     }
   ] as Attribute[];
 
-  // nodeTypes: NodeType[];
+  nodeTypes: NodeType[];
 
   constructor(
     public dialog: MatDialog,
@@ -55,24 +60,42 @@ export class AttributesComponent extends EntityTableComponent<Attribute> impleme
     // super.ngOnInit();
     combineLatest(this.attributeService.collection$, this.nodeTypeService.collection$).subscribe(data => {
       if (data[0] && data[1]) {
-        this.items = <Attribute[]>data[0];
-        this.items.forEach(item => {
-          item.AllowedNodeTypes = [];
-          item.AllowedNodeTypeIds.forEach(nodeTypeId => {
-            item.AllowedNodeTypes.push(data[1].find(p => p.Id === nodeTypeId).Name);
-          });
-        });
+        this.items = <Attribute[]>data[0] || [];
+        this.nodeTypes = data[1];
+        // this.items.forEach(item => {
+        //   item.AttributeNodeTypes = [];
+        //   // if (item.AllowedNodeTypeIds) {
+        //   //   item.AllowedNodeTypeIds.forEach(nodeTypeId => {
+        //   //     item.AllowedNodeTypes.push(data[1].find(p => p.Id === nodeTypeId).Name);
+        //   //   });
+        //   // }
+        // });
         this.onChange();
       }
     });
-    this.onLoad();
+    this.onLoad('$expand=AttributeNodeTypes');
     this.nodeTypeService.getAll();
   }
 
   onEdit(attribute: Attribute): void {
     super.onEdit({
-      attribute: attribute
+      attribute: attribute,
+      nodeTypes: this.nodeTypes
     });
+    // const dialogRef = this.dialog.open(AttributeEditModalComponent, {
+    //   data: {
+    //     attribute: attribute,
+    //     nodeTypes: this.nodeTypes
+    //   },
+    //   height: '80vh',
+    //   width: '90vw'
+    // });
+
+    // dialogRef.afterClosed().subscribe((response: Attribute) => {
+    //   if (response) {
+    //     this.attributeService.saveAttributeWithSubdata(response);
+    //   }
+    // });
   }
 
 }

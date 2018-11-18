@@ -8,7 +8,7 @@ import { NotificationService } from '../../notification.service';
 export class NodeTypeService extends BaseEntityService<NodeType> {
 
   constructor(httpClient: HttpClient, notificationService: NotificationService) {
-    super('api/node-types', httpClient, notificationService);
+    super('odata/nodetypes', httpClient, notificationService);
   }
 
 }

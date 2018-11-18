@@ -4,29 +4,25 @@
       "Id": 1,
       "Name": "Recruiter",
       "Description": "Internal Recruiting",
-      "NodeTypeId": 1,
-      "NodeAttributes": []
+      "NodeTypeId": 1
     },
     {
       "Id": 2,
       "Name": "Money Money Money",
       "Description": "Compensation Platform",
-      "NodeTypeId": 1,
-      "NodeAttributes": []
+      "NodeTypeId": 1
     },
     {
       "Id": 5,
       "Name": "Coaching 'em all",
       "Description": "Online Coaching Platform",
-      "NodeTypeId": 1,
-      "NodeAttributes": []
+      "NodeTypeId": 1
     },
     {
       "Id": 7,
       "Name": "prod04-ex",
       "Description": "Virtual Machine on Windows 2000",
-      "NodeTypeId": 3,
-      "NodeAttributes": []
+      "NodeTypeId": 3
     },
     {
       "Name": "career to the top",
@@ -118,6 +114,14 @@
         3
       ],
       "Id": 4
+    }
+  ],
+  "node-attributes":  [
+    {
+      "Id": 1,
+      "nodesId": 1,
+      "attributesId": 1,
+      "Value": "Test"
     }
   ],
   "relations": [

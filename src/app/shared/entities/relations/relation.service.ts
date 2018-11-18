@@ -8,7 +8,7 @@ import { NotificationService } from '../../notification.service';
 export class RelationService extends BaseEntityService<Relation> {
 
   constructor(httpClient: HttpClient, notificationService: NotificationService) {
-    super('api/relations', httpClient, notificationService);
+    super('odata/relations', httpClient, notificationService);
   }
 
 }

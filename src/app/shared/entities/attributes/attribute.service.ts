@@ -7,8 +7,17 @@ import { NotificationService } from '../../notification.service';
 @Injectable()
 export class AttributeService extends BaseEntityService<Attribute> {
 
+  _httpClient: HttpClient;
+
   constructor(httpClient: HttpClient, notificationService: NotificationService) {
-    super('api/attributes', httpClient, notificationService);
+    super('odata/attributes', httpClient, notificationService);
+    this._httpClient = httpClient;
+  }
+
+  saveAttributeWithSubdata(attribute: Attribute) {
+    this._httpClient.post('odata/attributes/PostWithSubdata?$expand=AttributeNodeTypes', {attribute: attribute}).subscribe(response => {
+      console.log(response);
+    });
   }
 
 }

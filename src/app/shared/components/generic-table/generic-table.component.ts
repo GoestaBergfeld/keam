@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material';
   templateUrl: './generic-table.component.html',
   styleUrls: ['./generic-table.component.scss']
 })
-export class GenericTableComponent {
+export class GenericTableComponent  {
 
   @Input() dataSource: MatTableDataSource<any>;
   @Input() displayedColumns: string[];

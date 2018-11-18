@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { BaseEntityService } from './../base-entity.service';
 import { Injectable } from '@angular/core';
-import { RelationType } from './relation-type.model';
+import { AttributeNodeType } from './attribute-node-type.model';
 import { NotificationService } from '../../notification.service';
 
 @Injectable()
-export class RelationTypeService extends BaseEntityService<RelationType> {
+export class AttributeNodeTypeService extends BaseEntityService<AttributeNodeType> {
 
   constructor(httpClient: HttpClient, notificationService: NotificationService) {
-    super('odata/relationtypes', httpClient, notificationService);
+    super('odata/attribute-node-types', httpClient, notificationService);
   }
 
 }

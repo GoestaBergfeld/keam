@@ -4,4 +4,5 @@ export interface NodeType extends BaseEntity {
   Name: string;
   Description: string;
   ColorCode: string;
+  Nodes: Node[];
 }

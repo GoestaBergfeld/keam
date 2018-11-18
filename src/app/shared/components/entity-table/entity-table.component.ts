@@ -12,6 +12,8 @@ export abstract class EntityTableComponent<T> implements OnInit {
   dataSource: MatTableDataSource<T>;
   columnAttributes: Attribute[];
 
+  query: string;
+
   private defaultStartColumns = [
     {
       Id: null,
@@ -19,8 +21,12 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypeIds: null,
-      DataType: AttributeDataType.OneLineText
+      AttributeNodeTypes: null,
+      NodeAttributes: null,
+      DataType: AttributeDataType.OneLineText,
+      GetValue: (item: any) => {
+        return item['Name'];
+      }
     },
     {
       Id: null,
@@ -28,8 +34,12 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypeIds: null,
-      DataType: AttributeDataType.MultiLineText
+      AttributeNodeTypes: null,
+      NodeAttributes: null,
+      DataType: AttributeDataType.MultiLineText,
+      GetValue: (item: any) => {
+        return item['Description'];
+      }
     }
   ];
 
@@ -40,8 +50,10 @@ export abstract class EntityTableComponent<T> implements OnInit {
       Description: '',
       Required: false,
       MultipleAllowed: false,
-      AllowedNodeTypeIds: null,
-      DataType: AttributeDataType.Actions
+      AttributeNodeTypes: null,
+      NodeAttributes: null,
+      DataType: AttributeDataType.Actions,
+      GetValue: (item: any) => {}
     }
   ];
 
@@ -74,12 +86,13 @@ export abstract class EntityTableComponent<T> implements OnInit {
     this.onLoad();
   }
 
-  onLoad() {
-    this.service.getAll();
+  onLoad(query?: string) {
+    this.query = query;
+    this.service.getAll(false, query);
   }
 
   onRefresh() {
-    this.service.getAll(true);
+    this.service.getAll(true, this.query);
   }
 
   onAdd(): void {
@@ -95,7 +108,7 @@ export abstract class EntityTableComponent<T> implements OnInit {
 
     dialogRef.afterClosed().subscribe((response: T) => {
       if (response) {
-        this.service.upsert(response);
+        this.service.upsert(response, this.query);
       }
     });
   }
@@ -110,7 +123,7 @@ export abstract class EntityTableComponent<T> implements OnInit {
 
     dialogRef.afterClosed().subscribe(ok => {
       if (ok) {
-        this.service.delete(obj['Id']);
+        this.service.delete(obj['Id'], this.query);
       }
     });
   }

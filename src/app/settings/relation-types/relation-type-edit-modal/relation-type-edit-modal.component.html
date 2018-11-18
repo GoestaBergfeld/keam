@@ -17,8 +17,8 @@
       <textarea matInput placeholder="Description" formControlName="Description"></textarea>
     </mat-form-field>
   </form>
+  <div class="dialog-tab-actions">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button (click)="onSave()" color="primary">Save</button>
+  </div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="onSave()">Save</button>
-</mat-dialog-actions>

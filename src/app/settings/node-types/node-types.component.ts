@@ -21,7 +21,10 @@ export class NodeTypesComponent extends EntityTableComponent<NodeType> implement
     {
       Name: 'ColorCode',
       DataType: AttributeDataType.ColorCode,
-      Required: false
+      Required: false,
+      GetValue: (item: any) => {
+        return item['ColorCode'];
+      }
     }
   ] as Attribute[];
 
